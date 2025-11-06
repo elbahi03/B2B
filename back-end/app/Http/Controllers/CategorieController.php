@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\models\Categorie;
+use App\Models\Categorie;
 
 class CategorieController extends Controller
 {
@@ -19,7 +19,7 @@ class CategorieController extends Controller
             return response()->json(['message' => 'Categorie non trouve'], 404);
         }
         return response()->json([
-            'categorie' -> $categorie
+            'categorie' => $categorie
         ]);
     }
 
@@ -28,9 +28,9 @@ class CategorieController extends Controller
         $valide = $request->validate([
             'categorie' => 'required|string|unique:categories',
         ]);
-        $categorie = Categorie::create([ $valide ]);
+        $categorie = Categorie::create($valide);
         return response()->json([
-            'categorie est cree' -> $categorie
+            'categorie est cree' => $categorie
         ]);
     }
 
@@ -45,7 +45,7 @@ class CategorieController extends Controller
         ]);
         $categorie->update($valide);
         return response()->json([
-            'categorie est modifiee' -> $categorie
+            'categorie est modifiee' => $categorie
         ]);
     }
 

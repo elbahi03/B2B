@@ -9,4 +9,8 @@ class Categorie extends Model
 {
     use HasFactory;
     protected $fillable = [ 'categorie' ];
+
+    public function store(){
+        return $this->hasOne(Store::class);
+    }
 }

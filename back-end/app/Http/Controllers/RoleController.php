@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\Role;
 
 class RoleController extends Controller
 {
@@ -40,24 +41,24 @@ class RoleController extends Controller
 
     // function : creer .
     public function store(Request $request){
-        $request->validate([
-            'role' => 'required|in:user,emp,admin',
+        $valide = $request->validate([
+            'role' => 'required|in:user,admin,superadmin',
         ]);
-        $role = Role::create($request->only(['role', 'user_id']));
-        return response()->json(['message' => 'Role created', 'data' => $role], 201);
+        $role = Role::create($valide);
+        return response()->json(['message' => 'Role created', 'data' => $role]);
     }
 
     // function : modifier .
     public function update(Request $request, $id){
         $role = Role::find($id);
         if (!$role) {
-            return response()->json(['message' => 'not found 404'], 404);
+            return response()->json(['message' => 'not found 404']
+        );
         }
         $request->validate([
-            'role' => 'in:user,emp,admin',
-            'user_id' => 'exists:users,id'
+            'role' => 'in:user,admin,superadmin',
         ]);
-        $role->update($request->only(['role', 'user_id']));
+        $role->update($request->only(['role']));
         return response()->json(['message' => 'Role updated', 'data' => $role]);
     }
 
