@@ -20,4 +20,8 @@ class Store extends Model
         return $this->belongsTo(Categorie::class, 'categorie_id');
     }
 
+    public function products(){
+        return $this->hasMany(Store::class);
+    }
+
 }
