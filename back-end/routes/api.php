@@ -50,3 +50,17 @@ Route::get('/stores/{id}', [StoreController::class, 'show']);
 Route::post('/stores', [StoreController::class, 'store']);
 Route::put('/stores/{id}', [StoreController::class, 'update']);
 Route::delete('/stores/{id}', [StoreController::class, 'delete']);
+
+// Route : Products .
+Route::get('/products', [StoreController::class, 'index']);
+Route::get('/products/{id}', [StoreController::class, 'show']);
+Route::post('/products', [StoreController::class, 'store']);
+Route::put('/products/{id}', [StoreController::class, 'update']);
+Route::delete('/products/{id}', [StoreController::class, 'delete']);
+
+// Route : Ordre .
+Route::get('/ordres', [StoreController::class, 'index']);
+Route::get('/ordres/{id}', [StoreController::class, 'show']);
+Route::post('/ordres', [StoreController::class, 'store']);
+Route::put('/ordres/{id}', [StoreController::class, 'update']);
+Route::delete('/ordres/{id}', [StoreController::class, 'delete']);
