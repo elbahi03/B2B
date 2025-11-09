@@ -28,10 +28,10 @@ class StoreController extends Controller{
         $valide = $request->validate([
             'user_id' => 'required|integer|exists:users,id',
             'categorie_id' => 'required|integer|exists:categories,id',
-            'name' => 'sometimes|string|max:255|unique:stores,name,' . $store->id,
+            'name' => 'required|string|max:255|unique:stores,name,' . $store->id,
             'ville' => 'required|string|max:255',
             'localisation' => 'required|string|max:255',
-            'phone' => 'sometimes|max:13|min:10|unique:stores,phone,' . $store->id,
+            'phone' => 'required|max:13|min:10|unique:stores,phone,' . $store->id,
             'description' => 'required|string|max:255',
             'logo_url' => 'nullable',
         ]);

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('type');
             $table->integer('stoke');
             $table->integer('min');
-            $table->float('prix_jamla', 8, 2);
             $table->float('prix_achat', 8, 2);
+            $table->float('prix_vente', 8, 2);
             $table->timestamps();
         });
     }
