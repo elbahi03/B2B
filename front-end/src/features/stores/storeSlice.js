@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axiosClient from "../../axiosClient";
+import axiosClient from "../../api/axiosClient";
 
 // function : get all
 export const fetchStores = createAsyncThunk(

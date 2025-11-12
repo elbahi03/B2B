@@ -197,9 +197,10 @@ const rolesSlice = createSlice({
 
         // function : ajouter role
         builder
-            .addCase(addRole.pending, (state) => {
+            .addCase(addRole.pending, (state, action) => {
                 state.loading = true;
                 state.error = null;
+                console.log(action);           
             })
             .addCase(addRole.fulfilled, (state, action) => {
                 state.loading = false;
