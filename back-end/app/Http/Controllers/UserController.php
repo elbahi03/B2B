@@ -75,7 +75,7 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    // function : post
+    // function : modifier
     public function update(Request $request, $id){
         $user = User::find($id);
         if (!$user) {
