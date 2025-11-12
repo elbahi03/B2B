@@ -10,7 +10,7 @@ function Login() {
   const { user, loading, error } = useSelector((state) => state.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +19,8 @@ function Login() {
 
   useEffect(() => {
     if (user) {
-         navigate("/home");
+      console.log("Login success");  
+         navigate("/WholesaleHub/home");
     }
   }, [user]);
 
