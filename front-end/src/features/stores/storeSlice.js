@@ -33,6 +33,7 @@ export const createStore = createAsyncThunk(
   async (storeData, { rejectWithValue }) => {
     try {
       const res = await axiosClient.post("/stores", storeData);
+      console.log(res.data);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || "Erreur lors de la création du magasin");
@@ -112,10 +113,12 @@ const storeSlice = createSlice({
       .addCase(createStore.fulfilled, (state, action) => {
         state.loading = false;
         state.stores.push(action.payload);
+        console.log("success", action.payload);
       })
       .addCase(createStore.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        console.log("rejected", action.payload);
       });
 
     // modifier

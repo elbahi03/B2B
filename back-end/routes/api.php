@@ -53,15 +53,15 @@ Route::delete('/categories/{id}', [CategorieController::class, 'delete'])->middl
 // Route : Store .
 Route::get('/stores', [StoreController::class, 'index']);
 Route::get('/stores/{id}', [StoreController::class, 'show']);
-Route::post('/stores', [StoreController::class, 'store'])->middleware('auth:sanctum');
-Route::put('/stores/{id}', [StoreController::class, 'update'])->middleware('auth:sanctum');
+Route::post('/stores', [StoreController::class, 'store']);
+Route::put('/stores/{id}', [StoreController::class, 'update']);
 Route::delete('/stores/{id}', [StoreController::class, 'delete'])->middleware('auth:sanctum');
 
 // Route : Products .
 Route::get('/products', [StoreController::class, 'index']);
 Route::get('/products/{id}', [StoreController::class, 'show']);
-Route::post('/products', [StoreController::class, 'store'])->middleware('auth:sanctum');
-Route::put('/products/{id}', [StoreController::class, 'update'])->middleware('auth:sanctum');
+Route::post('/products', [StoreController::class, 'store']);
+Route::put('/products/{id}', [StoreController::class, 'update']);
 Route::delete('/products/{id}', [StoreController::class, 'delete'])->middleware('auth:sanctum');
 
 // Route : Ordre .

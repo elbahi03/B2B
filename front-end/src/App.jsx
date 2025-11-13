@@ -6,6 +6,8 @@ import Register from './user/Auth/register'
 import Header from './user/Component/header'
 import Home from './user/pages/Home'
 import Scrolltotop from './user/Component/Scrolltotop'
+import Stores from './user/pages/Stores'
+import CreateStore from './user/pages/create'
 
 function App() {
 
@@ -15,10 +17,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/WholesaleHub" element={<Header />}> 
+        <Route path="/create" element={<CreateStore />} />
+
+        
           <Route path="Home" element={<Home/>} />
-          <Route path="kaka" element={<h1>hello</h1>} />
-        </Route>
+          <Route path="magasins" element={<Stores/> } />
+        
       </Routes>
     </>
   )

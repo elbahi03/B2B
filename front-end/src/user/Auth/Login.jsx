@@ -19,6 +19,7 @@ function Login() {
   };
 
   return (
+    <div className="login-container">
     <div className="wrapper">
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
@@ -64,6 +65,7 @@ function Login() {
           </p>
         </div>
       </form>
+    </div>
     </div>
   );
 }
