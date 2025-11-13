@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createStore } from "../../features/stores/storeSlice";
+import { fetchCategories } from "../../features/categories/categorieSlice";
 import axios from "axios";
 
 const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
-// 🔹 Fonction pour uploader le logo vers Cloudinary
+// Fonction d'upload Cloudinary
 const uploadToCloudinary = async (file) => {
   if (!file) return null;
 
@@ -24,6 +25,7 @@ const uploadToCloudinary = async (file) => {
 const CreateStore = () => {
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.stores);
+  const { categories } = useSelector((state) => state.categories);
 
   const [formData, setFormData] = useState({
     user_id: "",
@@ -37,12 +39,17 @@ const CreateStore = () => {
   });
   const [logoFile, setLogoFile] = useState(null);
 
-  // 🔹 Mise à jour des inputs
+  // Charger les catégories au montage du composant
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  // Changement des inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // 🔹 Soumission du formulaire
+  // Soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -54,7 +61,8 @@ const CreateStore = () => {
 
       const dataToSend = { ...formData, logo_url: logoUrl };
       dispatch(createStore(dataToSend));
-      console.log("✅ Store créé avec succès !");
+
+      console.log(" Store créé avec succès !");
       setFormData({
         user_id: "",
         categorie_id: "",
@@ -74,7 +82,7 @@ const CreateStore = () => {
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md">
-      <h2 className="text-2xl font-bold text-center mb-6">🛍️ Créer un nouveau Store</h2>
+      <h2 className="text-2xl font-bold text-center mb-6"> Créer un nouveau Store</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* ID utilisateur */}
@@ -90,17 +98,23 @@ const CreateStore = () => {
           />
         </div>
 
-        {/* Catégorie */}
+        {/* Sélection de la Catégorie */}
         <div>
-          <label className="block mb-1 font-medium">Catégorie ID</label>
-          <input
-            type="number"
+          <label className="block mb-1 font-medium">Catégorie</label>
+          <select
             name="categorie_id"
             value={formData.categorie_id}
             onChange={handleChange}
             className="w-full border rounded p-2"
             required
-          />
+          >
+            <option value="">-- Sélectionner une catégorie --</option>
+            {categories?.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.categorie}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Nom */}

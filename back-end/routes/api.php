@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrdreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,15 +60,15 @@ Route::put('/stores/{id}', [StoreController::class, 'update']);
 Route::delete('/stores/{id}', [StoreController::class, 'delete'])->middleware('auth:sanctum');
 
 // Route : Products .
-Route::get('/products', [StoreController::class, 'index']);
-Route::get('/products/{id}', [StoreController::class, 'show']);
-Route::post('/products', [StoreController::class, 'store']);
-Route::put('/products/{id}', [StoreController::class, 'update']);
-Route::delete('/products/{id}', [StoreController::class, 'delete'])->middleware('auth:sanctum');
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::post('/products', [ProductController::class, 'store']);
+Route::put('/products/{id}', [ProductController::class, 'update']);
+Route::delete('/products/{id}', [ProductController::class, 'delete'])->middleware('auth:sanctum');
 
 // Route : Ordre .
-Route::get('/ordres', [StoreController::class, 'index'])->middleware('auth:sanctum');
-Route::get('/ordres/{id}', [StoreController::class, 'show'])->middleware('auth:sanctum');
-Route::post('/ordres', [StoreController::class, 'store'])->middleware('auth:sanctum');
-Route::put('/ordres/{id}', [StoreController::class, 'update'])->middleware('auth:sanctum');
-Route::delete('/ordres/{id}', [StoreController::class, 'delete'])->middleware('auth:sanctum');
+Route::get('/ordres', [OrdreController::class, 'index'])->middleware('auth:sanctum');
+Route::get('/ordres/{id}', [OrdreController::class, 'show'])->middleware('auth:sanctum');
+Route::post('/ordres', [OrdreController::class, 'store'])->middleware('auth:sanctum');
+Route::put('/ordres/{id}', [OrdreController::class, 'update'])->middleware('auth:sanctum');
+Route::delete('/ordres/{id}', [OrdreController::class, 'delete'])->middleware('auth:sanctum');

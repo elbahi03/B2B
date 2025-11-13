@@ -108,9 +108,11 @@ const productSlice = createSlice({
             })
             .addCase(createProduct.fulfilled, (state, action) => {
                 state.loading = false; state.products.push(action.payload);
+                console.log("ok", action.payload);
             })
             .addCase(createProduct.rejected, (state, action) => {
                 state.loading = false; state.error = action.payload;
+                console.log("rejected", action.payload);
             });
 
         // modifier

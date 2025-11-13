@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -23,6 +24,7 @@ class ProductController extends Controller
 
     // function : creer .
     public function store(Request $request){
+        Log::info("request", $request->all());
         $valide = $request->validate([
             'store_id' => 'required|integer|exists:stores,id',
             'img_url' => 'nullable',

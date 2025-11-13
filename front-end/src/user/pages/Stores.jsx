@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchStores } from "../../features/stores/storeSlice";
 
 function Stores() {
+  const selecter = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   const { stores, loading, error } = useSelector((state) => state.stores);
 
@@ -48,7 +49,7 @@ function Stores() {
               {/* Bouton */}
               <button
                 className="mt-4 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                onClick={() => alert(`Visiter ${store.name}`)}
+                onClick={() => window.location.replace(`/WholesaleHub/magasin/${store.id}`)}
               >
                 Visiter le Store
               </button>
