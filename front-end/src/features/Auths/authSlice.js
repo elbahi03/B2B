@@ -21,6 +21,7 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const res = await axiosClient.post("/login", credentials);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
       localStorage.setItem("token", res.data.token);
       return res.data;
     } catch (err) {
@@ -35,6 +36,7 @@ export const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       await axiosClient.post("/logout");
+      localStorage.removeItem("user");
       localStorage.removeItem("token");
       return true;
     } catch (err) {
@@ -47,7 +49,7 @@ export const logoutUser = createAsyncThunk(
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: null,
+    user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
     token: localStorage.getItem("token") || null,
     loading: false,
     error: null,

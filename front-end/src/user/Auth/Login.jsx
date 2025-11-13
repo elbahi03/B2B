@@ -15,14 +15,8 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password }));
+    navigate("/WholesaleHub/home");
   };
-
-  useEffect(() => {
-    if (user) {
-      console.log("Login success");  
-         navigate("/WholesaleHub/home");
-    }
-  }, [user]);
 
   return (
     <div className="wrapper">

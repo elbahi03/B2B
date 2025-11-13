@@ -12,6 +12,8 @@ function Header() {
 
   const handleLogout = () => {
     dispatch(logoutUser());
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     window.location.href = "/";
   };
 
@@ -33,7 +35,7 @@ function Header() {
 
       <nav className={`nav ${isOpen ? "show" : ""}`}>
         <a href="/WholesaleHub/home">Accueil</a>
-        <a href="/WholesaleHub/Magasins">Les magasins</a>
+        <a href="/WholesaleHub/kaka">Les magasins</a>
         <a href="/WholesaleHub/Contact">Contact</a>
         <a href="/WholesaleHub/Apropos">A propos</a>
       </nav>
