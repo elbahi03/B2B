@@ -37,7 +37,7 @@ function Header() {
         <a href="/WholesaleHub/home">Accueil</a>
         <a href="/WholesaleHub/Magasins">Les magasins</a>
         <a href="/WholesaleHub/mescommandes">Mes commandes</a>
-        <a href="/WholesaleHub/Apropos">A propos</a>
+        <a href="/WholesaleHub/About">A propos</a>
       </nav>
         <details className="user-menu">
           <summary>{user ? user.name : "Utilisateur"}</summary>

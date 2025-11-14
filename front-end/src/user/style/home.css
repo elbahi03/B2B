@@ -1,0 +1,124 @@
+body {
+    background-color: #F8EDFF; /* Fond de l'espace sur les côtés */
+    color: #3D3B40;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.home {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 120px; 
+    padding-bottom: 40px; 
+}
+
+.main-content-wrapper {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+.hero {
+    background-color: #3D3B40;
+    color: white;
+    padding: 80px 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-content {
+    max-width: 100%; 
+    margin: 0 auto;
+    padding: 0; 
+}
+
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero-content h1 span {
+    color: #FF7F50;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #FF7F50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background-color: #e66a3d;
+}
+
+
+.pourquoi {
+    text-align: center;
+    padding: 0;
+}
+
+.pourquoi-content {
+    background-color: #BFCFE7;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pourquoi h2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: #3D3B40;
+}
+
+.pourquoi h2 span {
+    color: #FF7F50;
+}
+
+.reasons {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0; 
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.reasons > div {
+    flex: 1;
+    min-width: 250px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.reasons h3 {
+    color: #FF7F50;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.reasons p {
+    color: #3D3B40;
+    font-size: 0.9em;
+}

@@ -1,0 +1,114 @@
+
+.orders-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 80px;
+    min-height: 80vh;
+}
+
+.page-title {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #3D3B40;
+    text-align: center;
+}
+
+.loading-message, .error-message, .no-orders-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1em;
+}
+
+.error-message {
+    color: #FF7F50;
+}
+
+/* Carte de détails de la commande (utilisation de <details>) */
+.order-details-card {
+    margin-bottom: 15px;
+    border: 1px solid #BFCFE7;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.order-details-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* En-tête de la carte (visible lorsque la carte est fermée) */
+.order-summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+    padding-right: 15px;
+}
+
+.order-summary-header::marker,
+.order-summary-header::-webkit-details-marker {
+    display: none;
+}
+.order-summary-header::before {
+    content: '▶';
+    margin-right: 10px;
+    color: #FF7F50;
+    transition: transform 0.2s;
+}
+.order-details-card[open] .order-summary-header::before {
+    content: '▼';
+}
+
+/* Style du bouton de téléchargement */
+.btn-download-pdf {
+    background-color: #FF7F50; 
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.btn-download-pdf:hover {
+    background-color: #e66a3d;
+}
+
+/* Contenu détaillé de la commande */
+.order-content {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #BFCFE7;
+}
+
+.order-content p {
+    margin: 5px 0;
+}
+
+/* Liste des produits */
+.products-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.product-item {
+    padding: 5px 0;
+    border-bottom: 1px dotted #ccc;
+    font-size: 0.95em;
+}
+
+.order-total-price {
+    margin-top: 15px;
+    padding-top: 10px;
+    font-size: 1.2em;
+    color: #3D3B40;
+}

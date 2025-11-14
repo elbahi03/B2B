@@ -1,0 +1,143 @@
+.about-page {
+    margin-top: 80px; 
+    padding-bottom: 50px;
+    background-color: #F8EDFF;
+    color: #3D3B40;
+    font-family: sans-serif;
+    min-height: 80vh;
+}
+
+/* --- Section 1: Hero / Mission --- */
+.about-hero {
+    background-color: #3D3B40;
+    color: white;
+    padding: 80px 0; 
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.about-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.about-hero-content h1 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #FF7F50;
+}
+
+.about-hero-content p {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Style du bouton (réutilisé de Home.css) */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #FF7F50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+    background-color: #e66a3d;
+}
+
+/* --- Section 2: Problème & Solution (Mise en avant) --- */
+.about-problem-solution {
+    max-width: 1000px;
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
+}
+
+.solution-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.solution-reverse {
+    background-color: #BFCFE7;
+}
+
+.solution-block h2 {
+    font-size: 1.8em;
+    color: #FF7F50;
+    border-bottom: 2px solid #3D3B40;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.problem-statement, .solution-statement {
+    font-size: 1em;
+    line-height: 1.7;
+}
+
+/* --- Section 3: Engagements / Piliers --- */
+.about-engagements {
+    background-color: #BFCFE7;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.engagements-title {
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: #3D3B40;
+}
+
+.pillars-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.pillar-card {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-top: 5px solid #FF7F50;
+}
+
+.pillar-card h3 {
+    color: #3D3B40;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Media Query pour le Responsive */
+@media (max-width: 768px) {
+    .about-hero-content h1 {
+        font-size: 1.8em;
+    }
+    
+    .pillars-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .pillar-card {
+        max-width: 90%;
+    }
+}

@@ -1,0 +1,111 @@
+/* Container de la page */
+.stores-page {
+    padding: 0; 
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 120px; 
+    min-height: 80vh;
+}
+
+/* Titre de la page */
+.page-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #3D3B40;
+}
+
+/* Messages de statut */
+.loading-message {
+    text-align: center;
+    color: #FF7F50;
+    font-size: 1.1em;
+}
+
+.error-message {
+    text-align: center;
+    color: #FF7F50;
+    font-size: 1.1em;
+}
+
+.no-stores-message {
+    text-align: center;
+    color: #3D3B40;
+    padding: 40px;
+}
+
+/* Grille des magasins */
+.stores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* Carte de magasin */
+.store-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #BFCFE7; /* Bordure légère */
+}
+
+.store-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo du magasin */
+.store-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 3px solid #FF7F50;
+}
+
+/* Nom du magasin */
+.store-name {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #3D3B40;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Ville et Catégorie */
+.store-city, .store-category {
+    color: #3D3B40;
+    margin-top: 5px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.store-category {
+    font-style: italic;
+    color: #777;
+}
+
+/* Bouton Visiter */
+.btn-visit {
+    margin-top: 20px;
+    background-color: #FF7F50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-visit:hover {
+    background-color: #e66a3d;
+}
