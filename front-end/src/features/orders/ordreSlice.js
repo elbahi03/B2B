@@ -33,6 +33,7 @@ export const createOrdre = createAsyncThunk(
     async (ordreData, { rejectWithValue }) => {
         try {
             const res = await axiosClient.post("/ordres", ordreData);
+            console.log(res.data);
             return res.data;
         } catch (err) {
             return rejectWithValue(err.response?.data || "Erreur lors de la création de l'ordre");
@@ -106,10 +107,14 @@ const ordreSlice = createSlice({
                 state.loading = true;
             })
             .addCase(createOrdre.fulfilled, (state, action) => {
-                state.loading = false; state.ordres.push(action.payload);
+                state.loading = false;
+                state.ordres.push(action.payload);
+                console.log("ok",action.payload);
             })
             .addCase(createOrdre.rejected, (state, action) => {
-                state.loading = false; state.error = action.payload;
+                state.loading = false;
+                state.error = action.payload;
+                console.log("rejected", action.payload);
             });
 
         // modifier
