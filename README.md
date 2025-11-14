@@ -1,4 +1,4 @@
-_WholesaleHub :
+WholesaleHub :
 cahier charge & conciption & presenation :
 https://drive.google.com/drive/folders/1cbBoo9hZIUn4yhRFzU0iC59VVwGs2R4R?usp=drive_link
 trello :
