@@ -46,7 +46,8 @@ class OrdreController extends Controller
             'status' => $request->status
         ]);
         return response()->json([
-            'ordre est cree' => $ordre
+            'message' => 'Ordre cree',
+            'ordre' => $ordre
         ]);
     }
 
@@ -61,7 +62,8 @@ class OrdreController extends Controller
         ]);
         $ordre->update($valide);
         return response()->json([
-            'ordre est modifiee' => $ordre
+            'message' => 'Ordre modifiee',
+            'ordre' => $ordre
         ]);
     }
 
@@ -73,7 +75,8 @@ class OrdreController extends Controller
         }
         $ordre->delete();
         return response()->json([
-            'ordre est suprimee'
+            'message' => 'Ordre suprimee',
+            'ordre'
         ]);
     }
 

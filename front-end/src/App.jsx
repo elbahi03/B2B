@@ -9,6 +9,7 @@ import Scrolltotop from './user/Component/Scrolltotop'
 import Stores from './user/pages/Stores'
 import CreateStore from './user/pages/create'
 import CreateProduct from './user/pages/CreateProduct'
+import StoreDetails from './user/pages/StoreDetails'
 
 function App() {
 
@@ -20,10 +21,10 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/create" element={<CreateStore />} />
         <Route path='/productcreate' element={<CreateProduct />} />
+          <Route path="/WholesaleHub/magasin/:id" element={<StoreDetails/>} />
         <Route path="/WholesaleHub" element={<Header />}> 
           <Route path="Home" element={<Home/>} />
           <Route path="magasins" element={<Stores/>} />
-          <Route path="magasin/:id" element={<h1>Dashboard Organisateur</h1>} />
           <Route path="store/:id/produit/:id" element={<h1>Dashboard Organisateur</h1>} />
           <Route path="ordres" element={<h1>Dashboard Organisateur</h1>} />
           <Route path="Apropos" element={<h1>Dashboard Organisateur</h1>} />

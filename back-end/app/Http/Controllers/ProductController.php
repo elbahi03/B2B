@@ -37,7 +37,10 @@ class ProductController extends Controller
             'prix_vente' => 'required|numeric',
         ]);
         $product = Product::create($valide);
-        return response()->json(['product est cree' => $product ]);
+        return response()->json([
+            'message' => 'Product cree',
+            'product' => $product 
+        ]);
     }
 
     // function : update .
@@ -58,7 +61,10 @@ class ProductController extends Controller
             'prix_vente' => 'sometimes|numeric',
         ]);
         $product->update($valide);
-        return response()->json(['product est modifiee' => $product ]);
+        return response()->json([
+            'message' => 'Product modifiee',
+            'product' => $product 
+        ]);
     }
 
     // function : suprimee .
@@ -68,7 +74,9 @@ class ProductController extends Controller
             return response()->json(['message' => 'Product non trouvee'], 404);
         }
         $product->delete();
-        return response()->json(['product est suprimee' => $product ]);
+        return response()->json([
+            'product est suprimee'
+        ]);
     }
 
 

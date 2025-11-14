@@ -19,7 +19,8 @@ class StoreController extends Controller{
             return response()->json(['message' => 'Store non trouve']);
         }
         return response()->json([
-            'store :' => $store
+            'message' => 'Store trouve',
+            'Store' => $store
         ]);
     }
 
@@ -37,7 +38,8 @@ class StoreController extends Controller{
         ]);
         $store = Store::create($valide);
         return response()->json([
-            'store est cree' => $store
+            'message' => 'Store cree',
+            'store' => $store
         ]);
     }
 
@@ -58,7 +60,8 @@ class StoreController extends Controller{
         ]);
         $store->update($valide);
         return response()->json([
-            'store est modifiee' => $store
+            'message' => 'Store modifiee',
+            'store' => $store
         ]);
     }
 
@@ -70,8 +73,6 @@ class StoreController extends Controller{
         }
 
         $store->delete();
-        return response()->json([
-            'store est suprimee'
-        ]);
+        return response()->json(['message' => 'Store suprimee']);
     }
 }

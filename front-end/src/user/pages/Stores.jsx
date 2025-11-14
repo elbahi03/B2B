@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchStores } from "../../features/stores/storeSlice";
 
 function Stores() {
-  const selecter = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   const { stores, loading, error } = useSelector((state) => state.stores);
 

@@ -20,6 +20,7 @@ export const fetchStoreById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const res = await axiosClient.get(`/stores/${id}`);
+      console.log("hadi",res.data);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || "Magasin non trouvé");
@@ -99,10 +100,12 @@ const storeSlice = createSlice({
       .addCase(fetchStoreById.fulfilled, (state, action) => {
         state.loading = false;
         state.currentStore = action.payload;
+        console.log("ok",action.payload);
       })
       .addCase(fetchStoreById.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        console.log("rejected", action.payload);
       });
 
     // create
