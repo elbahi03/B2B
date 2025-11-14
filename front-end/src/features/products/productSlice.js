@@ -27,6 +27,19 @@ export const fetchProductById = createAsyncThunk(
     }
 );
 
+// function : get store_id
+export const fetchProductByStoreId = createAsyncThunk(
+    "products/fetchByStoreId",
+    async (id, { rejectWithValue }) => {
+        try {
+            const res = await axiosClient.get(`/products-by-store/${id}`);
+            return res.data;
+        } catch (err) {
+            return rejectWithValue(err.response?.data || "Produit non trouvé");
+        }
+    }
+);
+
 // function : create
 export const createProduct = createAsyncThunk(
     "products/create",
@@ -101,6 +114,19 @@ const productSlice = createSlice({
                 state.loading = false; state.error = action.payload;
             });
 
+        // fetch store_id
+        builder
+            .addCase(fetchProductByStoreId.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(fetchProductByStoreId.fulfilled, (state, action) => {
+                state.loading = false;
+                state.products = action.payload;
+            })
+            .addCase(fetchProductByStoreId.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            });
         // creer
         builder
             .addCase(createProduct.pending, (state) => {

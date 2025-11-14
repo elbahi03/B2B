@@ -22,6 +22,15 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
+    // function : get store_id .
+    public function showByStore($id){
+        $product = Product::where('store_id', $id)->get();
+        if (!$product) {
+            return response()->json(['message' => 'Product non trouvee'], 404);
+        }
+        return response()->json($product);
+    }
+
     // function : creer .
     public function store(Request $request){
         Log::info("request", $request->all());
