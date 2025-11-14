@@ -29,6 +29,13 @@ class OrdreController extends Controller
         ]);
     }
 
+    // function : ordre de user authentifier .
+    public function ordres(){
+        Log::info(auth()->id());
+        return response()->json(Ordre::where('user_id', auth()->id())->get());
+    }
+
+    // function : creer .
     public function store(Request $request){
         // Initialiser total
         $total = 0;

@@ -27,6 +27,19 @@ export const fetchOrdreById = createAsyncThunk(
     }
 );
 
+// function : get user auth
+export const fetchOrdresByUserId = createAsyncThunk(
+    "ordres/fetchByUserId",
+    async (id, { rejectWithValue }) => {
+        try {
+            const res = await axiosClient.get(`/ordres-user`);
+            return res.data;
+        } catch (err) {
+            return rejectWithValue(err.response?.data || "Ordres non trouvées");
+        }
+    }
+);
+
 // function : creer
 export const createOrdre = createAsyncThunk(
     "ordres/create",
@@ -99,6 +112,22 @@ const ordreSlice = createSlice({
             })
             .addCase(fetchOrdreById.rejected, (state, action) => {
                 state.loading = false; state.error = action.payload;
+            });
+
+        // fetch auth
+        builder
+            .addCase(fetchOrdresByUserId.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(fetchOrdresByUserId.fulfilled, (state, action) => {
+                state.loading = false;
+                state.ordres = action.payload;
+                console.log("ok",action.payload);
+            })
+            .addCase(fetchOrdresByUserId.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+                console.log("rejected", action.payload);
             });
 
         // creer
