@@ -28,6 +28,19 @@ export const fetchStoreById = createAsyncThunk(
   }
 );
 
+// function : filtrage with categorie .
+export const fetchStoresCategorie = createAsyncThunk(
+  "stores/fetchStoresCategorie",
+  async (categorie_id, { rejectWithValue }) => {
+    try {
+      const res = await axiosClient.get(`/products-by-store/${categorie_id}`);
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data || "Erreur lors du chargement des magasins");
+    }
+  }
+)
+
 // function : creer
 export const createStore = createAsyncThunk(
   "stores/create",

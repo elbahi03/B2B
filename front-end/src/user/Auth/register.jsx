@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../../features/Auths/authSlice"; // tu dois avoir cette action
+import { registerUser } from "../../features/Auths/authSlice";
 import "../style/Login.css";
 
 function Register() {
@@ -25,6 +25,7 @@ function Register() {
   }, [user]);
 
   return (
+    <div className="login-container">
     <div className="wrapper">
       <form onSubmit={handleSubmit}>
         <h1>Register</h1>
@@ -86,6 +87,7 @@ function Register() {
           </p>
         </div>
       </form>
+    </div>
     </div>
   );
 }

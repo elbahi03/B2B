@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use OpenApi\Annotations as OA;
+use App\Jobs\SendMail;
 
 class UserController extends Controller
 {
@@ -46,6 +47,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'role_id' => $request->role_id
         ]);
+        dispatch(new SendMail($user));
         $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json([
             'user' => $user,

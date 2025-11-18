@@ -1,4 +1,3 @@
-// Footer.jsx
 import React from "react";
 import "../style/footer.css";
 
@@ -18,16 +17,15 @@ function Footer() {
           <ul>
             <li><a href="/WholesaleHub/home">Accueil</a></li>
             <li><a href="/WholesaleHub/Magasins">Magasins</a></li>
-            <li><a href="/WholesaleHub/Contact">Contact</a></li>
-            <li><a href="/WholesaleHub/Apropos">À propos</a></li>
+            <li><a href="/WholesaleHub/About">À propos</a></li>
           </ul>
         </div>
 
         {/* Section 3 : Contact */}
         <div className="footer-section">
           <h3>Contact</h3>
-          <p>Email : contact@wholesalehub.ma</p>
-          <p>Téléphone : +212 6 12 34 56 78</p>
+          <p>Email : yassineelbahi44@gmail.com</p>
+          <p>Téléphone : +212 6 06 46 25 57</p>
           <p>Adresse : Casablanca, Maroc</p>
         </div>
 

@@ -23,6 +23,7 @@ function StoreDetails() {
     dispatch(fetchProductByStoreId(id));
   }, [dispatch, id]);
 
+  // add & remove product .
   const toggleProduct = (product) => {
     setCart((prev) => {
       if (prev[product.id]) {
@@ -30,29 +31,30 @@ function StoreDetails() {
         delete updated[product.id];
         return updated;
       }
-      return { ...prev, [product.id]: { produit: product, quantite: 1 } };
+      return { ...prev, [product.id]: { produit: product, quantite: product.min } };
     });
   };
 
-  const increaseQuantity = (productId) => {
+  // change qty of product .
+  const increaseQuantity = (product) => {
     setCart((prev) => ({
       ...prev,
-      [productId]: {
-        ...prev[productId],
-        quantite: prev[productId].quantite + 1,
+      [product.id]: {
+        ...prev[product.id],
+        quantite: prev[product.id].quantite + 1,
       },
     }));
   };
 
-  const decreaseQuantity = (productId) => {
+  const decreaseQuantity = (product) => {
     setCart((prev) => {
-      const qty = prev[productId].quantite - 1;
-      if (qty <= 0) {
+      const qty = prev[product.id].quantite - 1;
+      if (qty <= product.min) {
         const updated = { ...prev };
-        delete updated[productId];
+        delete updated[product.id];
         return updated;
       }
-      return { ...prev, [productId]: { ...prev[productId], quantite: qty } };
+      return { ...prev, [product.id]: { ...prev[product.id], quantite: qty } };
     });
   };
 
@@ -159,20 +161,20 @@ function StoreDetails() {
                   <div className="product-info">
                     <h3 className="product-name">{product.name}</h3>
                     <p className="product-price">{product.prix_vente} DH</p>
-                    <p className="product-min">Min : 10</p> 
+                    <p className="product-min">{product.min}</p> 
                   </div>
 
                   {selected ? (
                     <div className="quantity-controls">
                       <button
-                        onClick={() => decreaseQuantity(product.id)}
+                        onClick={() => decreaseQuantity(product)}
                         className="btn-qty-minus"
                       >
                         -
                       </button>
                       <span className="quantity-display">{selected.quantite}</span>
                       <button
-                        onClick={() => increaseQuantity(product.id)}
+                        onClick={() => increaseQuantity(product)}
                         className="btn-qty-plus"
                       >
                         +
@@ -210,10 +212,13 @@ function StoreDetails() {
               <p className="order-total">Total : {totalPrice} DH</p>
               {ordreState.loading && <p className="loading-order">Création...</p>}
               {ordreState.error && <p className="error-order">{ordreState.error}</p>}
+              {ordreState.success && (
+                <p className="success-order">Ordre créé avec successe</p>
+              )}
             </div>
           )}
           
-          {/* Retour (Ajouté en bas pour référence) */}
+          {/* Retour */}
           <button
             className="btn-return"
             onClick={() => window.location.replace("/WholesaleHub/magasins")}

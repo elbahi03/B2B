@@ -15,7 +15,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser({ email, password }));
-    navigate("/WholesaleHub/home");
+    navigate("/WholesaleHub/home"); 
   };
 
   return (
