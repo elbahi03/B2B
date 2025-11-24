@@ -24,12 +24,12 @@ class StoreController extends Controller{
         ]);
     }
 
-    // function : filtrage with categorie .
-    public function categorie($categorie_id){
-        if (!Store::where('categorie_id', $categorie_id)->exists()){
+    // function : filtrage with categorie id .
+    public function categorie($id){
+        if (!Store::where('categorie_id', $id)->exists()){
             return response()->json(['message' => 'Store non trouve']);
         }
-        return response()->json(Store::where('categorie_id', $categorie_id)->get());
+        return response()->json(Store::where('categorie_id', $id)->get());
     }
 
     // function : cree .

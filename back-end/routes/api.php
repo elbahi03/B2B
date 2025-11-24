@@ -46,8 +46,8 @@ Route::put('/users/{id}', [UserController::class, 'update'])->middleware('auth:s
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('auth:sanctum');
 
 // Route : Categorie .
-Route::get('/categories', [CategorieController::class, 'index'])->middleware('auth:sanctum');
-Route::get('/categories/{id}', [CategorieController::class, 'show'])->middleware('auth:sanctum');
+Route::get('/categories', [CategorieController::class, 'index']);
+Route::get('/categories/{id}', [CategorieController::class, 'show']);
 Route::post('/categories', [CategorieController::class, 'store'])->middleware('auth:sanctum');
 Route::put('/categories/{id}', [CategorieController::class, 'update'])->middleware('auth:sanctum');
 Route::delete('/categories/{id}', [CategorieController::class, 'delete'])->middleware('auth:sanctum');
@@ -55,7 +55,7 @@ Route::delete('/categories/{id}', [CategorieController::class, 'delete'])->middl
 // Route : Store .
 Route::get('/stores', [StoreController::class, 'index']);
 Route::get('/stores/{id}', [StoreController::class, 'show']);
-Route::get('/stores-categorie/{id}', [StoreController::class, 'showByCategorie']);
+Route::get('/stores-categorie/{id}', [StoreController::class, 'categorie']);
 Route::post('/stores', [StoreController::class, 'store']);
 Route::put('/stores/{id}', [StoreController::class, 'update']);
 Route::delete('/stores/{id}', [StoreController::class, 'delete'])->middleware('auth:sanctum');

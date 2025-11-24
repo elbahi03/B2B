@@ -1,11 +1,32 @@
 /* Container de la page */
 .stores-page {
-    padding: 0; 
+    padding: 0;
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: 120px; 
+    margin-top: 120px;
     min-height: 80vh;
 }
+
+.search-filter-container {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    padding: 10px;
+    width: 600px;
+  }
+  
+  .categorie-select {
+    padding: 10px;
+    width: 200px;
+    cursor: pointer;
+  }
+  
+
+
 
 /* Titre de la page */
 .page-title {
@@ -52,7 +73,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #BFCFE7; /* Bordure légère */
+    border: 1px solid #BFCFE7;
 }
 
 .store-card:hover {
@@ -80,7 +101,8 @@
 }
 
 /* Ville et Catégorie */
-.store-city, .store-category {
+.store-city,
+.store-category {
     color: #3D3B40;
     margin-top: 5px;
     font-size: 0.9em;

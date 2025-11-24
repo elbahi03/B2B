@@ -33,7 +33,7 @@ export const fetchStoresCategorie = createAsyncThunk(
   "stores/fetchStoresCategorie",
   async (categorie_id, { rejectWithValue }) => {
     try {
-      const res = await axiosClient.get(`/products-by-store/${categorie_id}`);
+      const res = await axiosClient.get(`/stores-categorie/${categorie_id}`);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || "Erreur lors du chargement des magasins");
@@ -121,6 +121,20 @@ const storeSlice = createSlice({
         console.log("rejected", action.payload);
       });
 
+    // fetch categorie
+    builder
+      .addCase(fetchStoresCategorie.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchStoresCategorie.fulfilled, (state, action) => {
+        state.loading = false;
+        state.stores = action.payload;
+      })
+      .addCase(fetchStoresCategorie.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+      
     // create
     builder
       .addCase(createStore.pending, (state) => {
