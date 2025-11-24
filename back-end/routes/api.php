@@ -56,6 +56,7 @@ Route::delete('/categories/{id}', [CategorieController::class, 'delete'])->middl
 // Route : Store .
 Route::get('/stores', [StoreController::class, 'index']);
 Route::get('/stores/{id}', [StoreController::class, 'show']);
+Route::get('/stores-admin', [StoreController::class, 'storeauth'])->middleware('auth:sanctum');
 Route::get('/stores-categorie/{id}', [StoreController::class, 'categorie']);
 Route::post('/stores', [StoreController::class, 'store']);
 Route::put('/stores/{id}', [StoreController::class, 'update']);

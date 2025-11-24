@@ -28,6 +28,20 @@ export const fetchStoreById = createAsyncThunk(
   }
 );
 
+// function : get store with auth .
+export const fetchStoresAuth = createAsyncThunk(
+  "stores/fetchStoresAuth",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await axiosClient.get("/stores-admin");
+      console.log(res.data);
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data || "Erreur lors du chargement des magasins");
+    }
+  }
+);
+
 // function : filtrage with categorie .
 export const fetchStoresCategorie = createAsyncThunk(
   "stores/fetchStoresCategorie",
@@ -116,6 +130,22 @@ const storeSlice = createSlice({
         console.log("ok",action.payload);
       })
       .addCase(fetchStoreById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        console.log("rejected", action.payload);
+      });
+
+    // fetch auth
+    builder
+      .addCase(fetchStoresAuth.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchStoresAuth.fulfilled, (state, action) => {
+        state.loading = false;
+        state.currentStore = action.payload;
+        console.log("ok",action.payload);
+      })
+      .addCase(fetchStoresAuth.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
         console.log("rejected", action.payload);

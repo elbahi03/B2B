@@ -12,6 +12,8 @@ import StoreDetails from './user/pages/StoreDetails'
 import Orders from './user/pages/orders'
 import About from './user/pages/Apropos'
 import LoginAdmin from './admin/auth/loginadmin'
+import Dashboard from './admin/pages/Dashboard'
+import Layout from './admin/Component/layout'
 
 function App() {
 
@@ -31,6 +33,9 @@ function App() {
           <Route path="About" element={<About />} />
         </Route>
         <Route path="/admin/login" element={<LoginAdmin />} />
+        <Route path="/admin" element={<Layout />}>
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+        </Route>
       </Routes>
     </>
   )

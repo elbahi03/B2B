@@ -24,6 +24,15 @@ class StoreController extends Controller{
         ]);
     }
 
+    // function : get store with user auth .
+    public function storeauth(){
+        $stores = Store::where('user_id', auth()->id())->get();
+        if ($stores->isEmpty()) {
+            return response()->json(['message' => 'Aucun store trouvé']);
+        }
+        return response()->json($stores);
+    }
+
     // function : filtrage with categorie id .
     public function categorie($id){
         if (!Store::where('categorie_id', $id)->exists()){

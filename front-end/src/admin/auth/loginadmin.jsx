@@ -17,12 +17,12 @@ function LoginAdmin() {
     dispatch(loginAdmin({ email, password }));
   };
 
-  if (user) {
-    console.log("Login correct");
-  }
-  if (error) {
-    console.log("Login incorrect", error);
-  }
+  useEffect(() => {
+    if (user) {
+      navigate("/admin/dashboard");
+    }
+  }, [user, navigate]);
+  
   return (
     <div className="login-container">
     <div className="wrapper">
