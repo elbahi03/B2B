@@ -33,6 +33,32 @@ class UserController extends Controller
         ]);
     }
 
+    // function : login admin 
+    public function loginAdmin(Request $request){
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+        if ( !Auth::attempt($request->only('email', 'password'))) {
+            return response()->json([
+                'message' => 'Invalid credentials'
+            ], 401);
+        }
+
+        if (Auth::user()->role_id !== 2) {
+            return response()->json([
+                'message' => 'Unauthorized : not admin'
+            ], 403);
+        }
+        $user = Auth::user();
+        $token = $user->createToken('api-token')->plainTextToken;
+        return response()->json([
+            'user' => $user,
+            'token' => $token
+        ]);
+        
+    }
+
     // function : register 
     public function register(Request $request){
         $request->validate([

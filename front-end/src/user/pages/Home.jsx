@@ -3,12 +3,14 @@ import Footer from "../Component/footer";
 import "./../style/Home.css";
 import Header from "../Component/header";
 function Home() {
+  if (localStorage.getItem("token")) {
+    window.location.href = "/WholesaleHub/home";
+  }
   return (
     <>
     <Header />
     <div className="home">
       <div className="main-content-wrapper"> 
-        {/* Section 1: Hero */}
         <section className="hero">
           <div className="hero-content">
             <h1>Bienvenue sur <span>WholesaleHub</span></h1>
@@ -16,10 +18,8 @@ function Home() {
             <a href="/WholesaleHub/Magasins" className="btn">Découvrir maintenant</a>
           </div>
         </section>
-
-        {/* Section 2: Pourquoi nous */}
         <section className="pourquoi">
-          <div className="pourquoi-content"> {/* Réutilisation de l'idée de centrage précédente */}
+          <div className="pourquoi-content">
             <h2>Pourquoi choisir <span>WholesaleHub</span> ?</h2>
             <div className="reasons">
               <div>

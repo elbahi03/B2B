@@ -11,6 +11,7 @@ import CreateProduct from './user/pages/CreateProduct'
 import StoreDetails from './user/pages/StoreDetails'
 import Orders from './user/pages/orders'
 import About from './user/pages/Apropos'
+import LoginAdmin from './admin/auth/loginadmin'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="mescommandes" element={<Orders />} />
           <Route path="About" element={<About />} />
         </Route>
+        <Route path="/admin/login" element={<LoginAdmin />} />
       </Routes>
     </>
   )

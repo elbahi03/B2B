@@ -30,6 +30,21 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+// function : login admin .
+export const loginAdmin = createAsyncThunk(
+  "auth/loginAdmin",
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const res = await axiosClient.post("/login-admin", credentials);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("token", res.data.token);
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data || "Erreur de connexion");
+    }
+  }
+);
+
 // function : logout
 export const logoutUser = createAsyncThunk(
   "auth/logout",
@@ -82,6 +97,21 @@ const authSlice = createSlice({
         state.token = action.payload.token;
       })
       .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
+
+    // login admin
+    builder
+      .addCase(loginAdmin.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(loginAdmin.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+      })
+      .addCase(loginAdmin.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
