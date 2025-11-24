@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Store;
 use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
@@ -29,6 +30,16 @@ class ProductController extends Controller
             return response()->json(['message' => 'Product non trouvee'], 404);
         }
         return response()->json($product);
+    }
+
+    // function : get auth .
+    public function showByUser(){
+        $stores = Store::where('user_id', auth()->id())->get();
+        if ($stores->isEmpty()) {
+            return response()->json(['message' => 'Aucun store trouvé']);
+        }
+        $products = Product::whereIn('store_id', $stores->pluck('id'))->get();
+        return response()->json($products);
     }
 
     // function : creer .

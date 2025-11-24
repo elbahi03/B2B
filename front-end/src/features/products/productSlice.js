@@ -40,6 +40,19 @@ export const fetchProductByStoreId = createAsyncThunk(
     }
 );
 
+// function : get auth .
+export const fetchProductsByUser = createAsyncThunk(
+    "products/fetchByUser",
+    async (_, { rejectWithValue }) => {
+        try {
+            const res = await axiosClient.get("/products-Auth");
+            return res.data;
+        } catch (err) {
+            return rejectWithValue(err.response?.data || "Erreur lors du chargement des produits");
+        }
+    }
+);
+
 // function : create
 export const createProduct = createAsyncThunk(
     "products/create",
@@ -126,6 +139,22 @@ const productSlice = createSlice({
             .addCase(fetchProductByStoreId.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
+            });
+        
+        // fetch auth
+        builder
+            .addCase(fetchProductsByUser.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(fetchProductsByUser.fulfilled, (state, action) => {
+                state.loading = false;
+                state.products = action.payload;
+                console.log("ok", action.payload);
+            })
+            .addCase(fetchProductsByUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+                console.log("rejected", action.payload);
             });
         // creer
         builder

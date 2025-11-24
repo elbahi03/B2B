@@ -6,7 +6,7 @@ import Register from './user/Auth/register'
 import Home from './user/pages/Home'
 import Scrolltotop from './user/Component/Scrolltotop'
 import Stores from './user/pages/Stores'
-import CreateStore from './user/pages/create'
+import CreateStore from './admin/pages/create'
 import CreateProduct from './user/pages/CreateProduct'
 import StoreDetails from './user/pages/StoreDetails'
 import Orders from './user/pages/orders'
@@ -14,6 +14,7 @@ import About from './user/pages/Apropos'
 import LoginAdmin from './admin/auth/loginadmin'
 import Dashboard from './admin/pages/Dashboard'
 import Layout from './admin/Component/layout'
+import Productslist from './admin/pages/Productslist'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/admin/login" element={<LoginAdmin />} />
         <Route path="/admin" element={<Layout />}>
           <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/produits" element={<Productslist />} />
         </Route>
       </Routes>
     </>

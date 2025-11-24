@@ -24,7 +24,7 @@ function Layout() {
         <ul className="sidebar-menu">
           <li><Link to="/admin/dashboard"> Dashboard</Link></li>
           <li><Link to="/admin/stores"> Magasin</Link></li>
-          <li><Link to="/admin/products"> Produits</Link></li>
+          <li><Link to="/admin/produits"> Produits</Link></li>
           <li><Link to="/admin/manage-products"> Gestion de Produits</Link></li>
           <li><Link to="/admin/orders"> Ordres</Link></li>
           <li><Link to="/admin/checkin-bonnes"> Checkin des Bonnes</Link></li>
