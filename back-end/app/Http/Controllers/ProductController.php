@@ -44,10 +44,8 @@ class ProductController extends Controller
 
     // function : creer .
     public function store(Request $request){
-        Log::info("request", $request->all());
-        $valide = $request->validate([
-            'store_id' => 'required|integer|exists:stores,id',
-            'img_url' => 'nullable',
+        $validated = $request->validate([
+            'img_url' => 'nullable|string',
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'type' => 'required|string|max:255',
@@ -56,17 +54,23 @@ class ProductController extends Controller
             'prix_achat' => 'required|numeric',
             'prix_vente' => 'required|numeric',
         ]);
-        $product = Product::create($valide);
+        $store = Store::where('user_id', auth()->id())->first();
+        if (!$store) {
+            return response()->json(['message' => 'Aucun magasin trouvé pour cet utilisateur'], 404);
+        }
+        $validated['store_id'] = $store->id;
+        $product = Product::create($validated);
         return response()->json([
-            'message' => 'Product cree',
-            'product' => $product 
+            'message' => 'Produit créé avec succès',
+            'product' => $product,
         ]);
     }
+
 
     // function : update .
     public function update(Request $request, $id){
         $product = Product::find($id);
-        if (!$product){
+        if (!$product) {
             return response()->json(['message' => 'Product non trouvee'], 404);
         }
         $valide = $request->validate([
@@ -83,14 +87,14 @@ class ProductController extends Controller
         $product->update($valide);
         return response()->json([
             'message' => 'Product modifiee',
-            'product' => $product 
+            'product' => $product
         ]);
     }
 
     // function : suprimee .
     public function delete(Request $request, $id){
         $product = Product::find($id);
-        if (!$product){
+        if (!$product) {
             return response()->json(['message' => 'Product non trouvee'], 404);
         }
         $product->delete();
@@ -98,6 +102,4 @@ class ProductController extends Controller
             'product est suprimee'
         ]);
     }
-
-
 }

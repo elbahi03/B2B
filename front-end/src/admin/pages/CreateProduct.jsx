@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../features/products/productSlice";
 import axios from "axios";
@@ -6,7 +6,6 @@ import axios from "axios";
 const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
-// 🔹 Upload Cloudinary
 const uploadToCloudinary = async (file) => {
   if (!file) return null;
 
@@ -27,7 +26,6 @@ const CreateProduct = () => {
   const { loading, error } = useSelector((state) => state.products);
 
   const [formData, setFormData] = useState({
-    store_id: "",
     name: "",
     description: "",
     type: "",
@@ -39,61 +37,47 @@ const CreateProduct = () => {
   });
 
   const [imgFile, setImgFile] = useState(null);
+  const [successMessage, setSuccessMessage] = useState("");
 
-  // 🔹 Mise à jour inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // 🔹 Soumission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     let imgUrl = "";
-
     if (imgFile) {
       imgUrl = await uploadToCloudinary(imgFile);
     }
 
     const dataToSend = { ...formData, img_url: imgUrl };
 
-    dispatch(createProduct(dataToSend));
+    const action = await dispatch(createProduct(dataToSend));
 
-    // reset form
-    setFormData({
-      store_id: "",
-      name: "",
-      description: "",
-      type: "",
-      stoke: "",
-      min: "",
-      prix_achat: "",
-      prix_vente: "",
-      img_url: "",
-    });
-
-    setImgFile(null);
+    if (createProduct.fulfilled.match(action)) {
+      setSuccessMessage(" Produit créé avec succès !");
+      setFormData({
+        name: "",
+        description: "",
+        type: "",
+        stoke: "",
+        min: "",
+        prix_achat: "",
+        prix_vente: "",
+        img_url: "",
+      });
+      setImgFile(null);
+      // enlever le message après 3 secondes
+      setTimeout(() => setSuccessMessage(""), 3000);
+    }
   };
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md">
-      <h2 className="text-2xl font-bold text-center mb-6">📦 Ajouter un Produit</h2>
+      <h2 className="text-2xl font-bold text-center mb-6"> Ajouter un Produit</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-
-        {/* Store ID */}
-        <div>
-          <label className="block mb-1 font-medium">Store ID</label>
-          <input
-            type="number"
-            name="store_id"
-            value={formData.store_id}
-            onChange={handleChange}
-            className="w-full border rounded p-2"
-            required
-          />
-        </div>
-
         {/* Nom */}
         <div>
           <label className="block mb-1 font-medium">Nom du Produit</label>
@@ -213,7 +197,13 @@ const CreateProduct = () => {
           {loading ? "Création..." : "Ajouter le Produit"}
         </button>
 
+        {/* Message d'erreur */}
         {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+
+        {/* Message de succès */}
+        {successMessage && (
+          <p className="text-green-600 text-center mt-2">{successMessage}</p>
+        )}
       </form>
     </div>
   );

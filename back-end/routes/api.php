@@ -58,8 +58,8 @@ Route::get('/stores', [StoreController::class, 'index']);
 Route::get('/stores/{id}', [StoreController::class, 'show']);
 Route::get('/stores-admin', [StoreController::class, 'storeauth'])->middleware('auth:sanctum');
 Route::get('/stores-categorie/{id}', [StoreController::class, 'categorie']);
-Route::post('/stores', [StoreController::class, 'store']);
-Route::put('/stores/{id}', [StoreController::class, 'update']);
+Route::post('/stores', [StoreController::class, 'store'])->middleware('auth:sanctum');
+Route::put('/stores/{id}', [StoreController::class, 'update'])->middleware('auth:sanctum');
 Route::delete('/stores/{id}', [StoreController::class, 'delete'])->middleware('auth:sanctum');
 
 // Route : Products .
@@ -67,8 +67,8 @@ Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/products-by-store/{id}', [ProductController::class, 'showByStore']);
 Route::get('/products-Auth', [ProductController::class, 'showByUser'])->middleware('auth:sanctum');
-Route::post('/products', [ProductController::class, 'store']);
-Route::put('/products/{id}', [ProductController::class, 'update']);
+Route::post('/products', [ProductController::class, 'store'])->middleware('auth:sanctum');
+Route::put('/products/{id}', [ProductController::class, 'update'])->middleware('auth:sanctum');
 Route::delete('/products/{id}', [ProductController::class, 'delete'])->middleware('auth:sanctum');
 
 // Route : Ordre .

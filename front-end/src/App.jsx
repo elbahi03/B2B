@@ -6,8 +6,7 @@ import Register from './user/Auth/register'
 import Home from './user/pages/Home'
 import Scrolltotop from './user/Component/Scrolltotop'
 import Stores from './user/pages/Stores'
-import CreateStore from './admin/pages/create'
-import CreateProduct from './user/pages/CreateProduct'
+import CreateProduct from './admin/pages/CreateProduct'
 import StoreDetails from './user/pages/StoreDetails'
 import Orders from './user/pages/orders'
 import About from './user/pages/Apropos'
@@ -15,6 +14,7 @@ import LoginAdmin from './admin/auth/loginadmin'
 import Dashboard from './admin/pages/Dashboard'
 import Layout from './admin/Component/layout'
 import Productslist from './admin/pages/Productslist'
+import CreateStore from './user/pages/create'
 
 function App() {
 
@@ -25,7 +25,6 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/create" element={<CreateStore />} />
-        <Route path='/productcreate' element={<CreateProduct />} />
         <Route path="/WholesaleHub">
           <Route path="Home" element={<Home />} />
           <Route path="magasins" element={<Stores />} />
@@ -35,8 +34,9 @@ function App() {
         </Route>
         <Route path="/admin/login" element={<LoginAdmin />} />
         <Route path="/admin" element={<Layout />}>
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-          <Route path="/admin/produits" element={<Productslist />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="produits" element={<Productslist />} />
+          <Route path="productcreate" element={<CreateProduct />} />
         </Route>
       </Routes>
     </>
