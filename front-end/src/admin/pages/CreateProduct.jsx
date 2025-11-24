@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../features/products/productSlice";
 import axios from "axios";
@@ -8,23 +8,19 @@ const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
 const uploadToCloudinary = async (file) => {
   if (!file) return null;
-
   const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-
   const res = await axios.post(
     `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
     formData
   );
-
   return res.data.secure_url;
 };
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.products);
-
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -68,8 +64,8 @@ const CreateProduct = () => {
         img_url: "",
       });
       setImgFile(null);
-      // enlever le message après 3 secondes
-      setTimeout(() => setSuccessMessage(""), 3000);
+      // enlever le message après 7 secondes
+      setTimeout(() => setSuccessMessage(""), 7000);
     }
   };
 
@@ -131,7 +127,7 @@ const CreateProduct = () => {
 
         {/* Stock Minimum */}
         <div>
-          <label className="block mb-1 font-medium">Stock Minimum</label>
+          <label className="block mb-1 font-medium">Min pour achat</label>
           <input
             type="number"
             name="min"

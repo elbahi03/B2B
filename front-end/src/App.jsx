@@ -15,6 +15,7 @@ import Dashboard from './admin/pages/Dashboard'
 import Layout from './admin/Component/layout'
 import Productslist from './admin/pages/Productslist'
 import CreateStore from './user/pages/create'
+import Gestionproduct from './admin/pages/Gestionproduct'
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="produits" element={<Productslist />} />
           <Route path="productcreate" element={<CreateProduct />} />
+          <Route path="productgestion" element={<Gestionproduct />} />
         </Route>
       </Routes>
     </>
