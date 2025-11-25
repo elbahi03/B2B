@@ -53,6 +53,19 @@ export const fetchOrdresByStoreId = createAsyncThunk(
     }
 );
 
+// funtion : virifier ordre .
+export const checkOrdre = createAsyncThunk(
+    "ordres/check",
+    async (id, { rejectWithValue }) => {
+        try {
+            const res = await axiosClient.get(`/ordres-verif/${id}`);
+            return res.data;
+        } catch (err) {
+            return rejectWithValue(err.response?.data || "Ordre non trouvées");
+        }
+    }
+);
+
 // function : creer
 export const createOrdre = createAsyncThunk(
     "ordres/create",
@@ -159,6 +172,22 @@ const ordreSlice = createSlice({
                 console.log("rejected", action.payload);
             });
 
+        // check
+        builder
+            .addCase(checkOrdre.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(checkOrdre.fulfilled, (state, action) => {
+                state.loading = false;
+                state.currentOrdre = action.payload;
+                console.log("ok",action.payload);
+            })
+            .addCase(checkOrdre.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+                console.log("rejected", action.payload);
+            });
+        
         // creer
         builder
             .addCase(createOrdre.pending, (state) => {

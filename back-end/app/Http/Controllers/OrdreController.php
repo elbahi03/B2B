@@ -44,6 +44,17 @@ class OrdreController extends Controller
         return response()->json(Ordre::whereIn('store_id', $stores->pluck('id'))->get());   
     }
 
+    // verifier ordre .
+    public function verifOrdre($id){
+        $ordre = Ordre::find($id);
+        if (!$ordre){
+            return response()->json(['message' => 'Ordre non trouve'], 404);
+        }
+        return response()->json([
+            'ordre' => $ordre
+        ]);
+    }
+
     // function : creer .
     public function store(Request $request){
         // Initialiser total

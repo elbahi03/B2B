@@ -17,6 +17,7 @@ import Productslist from './admin/pages/Productslist'
 import CreateStore from './user/pages/create'
 import Gestionproduct from './admin/pages/Gestionproduct'
 import Ordre from './admin/pages/ordre'
+import OrdreCheck from './admin/pages/OrdreCheck'
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="productcreate" element={<CreateProduct />} />
           <Route path="productgestion" element={<Gestionproduct />} />
           <Route path="orders" element={<Ordre />} />
+          <Route path="checkin-bonnes" element={<OrdreCheck />} />
         </Route>
       </Routes>
     </>

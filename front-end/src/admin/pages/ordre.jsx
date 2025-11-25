@@ -5,14 +5,20 @@ import "../style/ordre.css";
 
 export default function Ordre() {
     const dispatch = useDispatch();
+    const { products } = useSelector((state) => state.products);
+    console.log("products", products);
     const { ordres, loading, error } = useSelector((state) => state.ordres);
-
     const [selectedOrdre, setSelectedOrdre] = useState(null);
     const [status, setStatus] = useState("");
 
     useEffect(() => {
         dispatch(fetchOrdresByStoreId());
     }, [dispatch]);
+
+    const getProductName = (id) => {
+        const prod = products.find((p) => p.id === id);
+        return prod ? prod.name : `Produit #${id}`;
+    };
 
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -55,7 +61,7 @@ export default function Ordre() {
                                 {Array.isArray(ordre.produits_commandes) && ordre.produits_commandes.length > 0
                                     ? ordre.produits_commandes.map((p, i) => (
                                         <span key={i} className="product-tag">
-                                            Produit ID {p.products_id} * {p.quantite}
+                                            {getProductName(p.products_id)} * {p.quantite}
                                         </span>
                                     ))
                                     : "Aucun produit"}
