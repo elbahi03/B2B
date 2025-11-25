@@ -35,6 +35,15 @@ class OrdreController extends Controller
         return response()->json(Ordre::where('user_id', auth()->id())->get());
     }
 
+    // function : ordres de store .
+    public function ordresStore(){
+        $stores = Store::where('user_id', auth()->id())->get();
+        if ($stores->isEmpty()) {
+            return response()->json(['message' => 'Aucun store trouve']);
+        }
+        return response()->json(Ordre::whereIn('store_id', $stores->pluck('id'))->get());   
+    }
+
     // function : creer .
     public function store(Request $request){
         // Initialiser total

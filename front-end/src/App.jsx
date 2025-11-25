@@ -16,6 +16,7 @@ import Layout from './admin/Component/layout'
 import Productslist from './admin/pages/Productslist'
 import CreateStore from './user/pages/create'
 import Gestionproduct from './admin/pages/Gestionproduct'
+import Ordre from './admin/pages/ordre'
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="produits" element={<Productslist />} />
           <Route path="productcreate" element={<CreateProduct />} />
           <Route path="productgestion" element={<Gestionproduct />} />
+          <Route path="orders" element={<Ordre />} />
         </Route>
       </Routes>
     </>

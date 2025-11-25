@@ -75,6 +75,7 @@ Route::delete('/products/{id}', [ProductController::class, 'delete'])->middlewar
 Route::get('/ordres', [OrdreController::class, 'index'])->middleware('auth:sanctum');
 Route::get('/ordres/{id}', [OrdreController::class, 'show'])->middleware('auth:sanctum');
 Route::get('/ordres-user', [OrdreController::class, 'ordres'])->middleware('auth:sanctum');
+Route::get('/ordres-store', [OrdreController::class, 'ordresStore'])->middleware('auth:sanctum');
 Route::post('/ordres', [OrdreController::class, 'store'])->middleware('auth:sanctum');
 Route::put('/ordres/{id}', [OrdreController::class, 'update'])->middleware('auth:sanctum');
 Route::delete('/ordres/{id}', [OrdreController::class, 'delete'])->middleware('auth:sanctum');

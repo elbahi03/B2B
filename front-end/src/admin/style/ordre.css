@@ -1,0 +1,135 @@
+.orders-container {
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.orders-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+}
+
+.status-filter-container {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.status-filter {
+  padding: 8px 12px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.orders-table thead {
+  background: #2c3e50;
+  color: #fff;
+}
+
+.orders-table th, .orders-table td {
+  padding: 14px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.orders-table tbody tr:hover {
+  background: #f7f7f7;
+}
+
+.btn-status {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-en-cours { background: #3498db; }
+.btn-terminee { background: #27ae60; }
+.btn-annulee { background: #c0392b; }
+
+.btn-status:hover { opacity: 0.85; }
+
+.btn-delete {
+  background: #e74c3c;
+  padding: 6px 12px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-delete:hover { opacity: 0.85; }
+
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-yes {
+  background: #27ae60;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-no {
+  background: #7f8c8d;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.products-cell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 5px 0 ;
+  }
+  
+  .product-tag {
+    background-color: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
