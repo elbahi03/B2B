@@ -3,9 +3,7 @@ import Footer from "../Component/footer";
 import "./../style/Home.css";
 import Header from "../Component/header";
 function Home() {
-  if (localStorage.getItem("token")) {
-    window.location.href = "/WholesaleHub/home";
-  }
+  
   return (
     <>
     <Header />
