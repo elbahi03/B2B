@@ -16,16 +16,16 @@ const Dashboard = () => {
   if (!currentStore) return <p>Aucun magasin trouvé pour cet admin.</p>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Tableau de bord</h1>
-      <div className="bg-white shadow p-4 rounded">
-        <h2 className="text-xl font-semibold mb-2">Informations du Magasin</h2>
+    <div className="page-dash">
+      <h1 className="titre-dash">Tableau de bord</h1>
+      <div className="details-dash">
+        <h2 className="details-titre">Informations du Magasin</h2>
 
         {currentStore?.[0]?.logo_url && (
           <img
             src={currentStore?.[0]?.logo_url}
             alt="Logo"
-            className="w-20 mt-3 rounded"
+            className="img-dash"
           />
         )}
         <p><strong>Nom :</strong> {currentStore?.[0]?.name}</p>

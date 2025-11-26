@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../features/products/productSlice";
 import axios from "axios";
+import "../style/create.css";
 
 const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
@@ -70,116 +71,116 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md">
-      <h2 className="text-2xl font-bold text-center mb-6"> Ajouter un Produit</h2>
+    <div className="page-create">
+      <h2 className="create-titre"> Ajouter un Produit</h2>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="form-create">
         {/* Nom */}
         <div>
-          <label className="block mb-1 font-medium">Nom du Produit</label>
+          <label className="label-create">Nom du Produit</label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="input-create"
             required
           />
         </div>
 
         {/* Description */}
         <div>
-          <label className="block mb-1 font-medium">Description</label>
+          <label className="label-create">Description</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="input-create"
             required
           />
         </div>
 
         {/* Type */}
         <div>
-          <label className="block mb-1 font-medium">Type</label>
+          <label className="label-create">Type</label>
           <input
             type="text"
             name="type"
             value={formData.type}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="input-create"
             required
           />
         </div>
 
         {/* Stock */}
         <div>
-          <label className="block mb-1 font-medium">Stock</label>
+          <label className="label-create">Stock</label>
           <input
             type="number"
             name="stoke"
             value={formData.stoke}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="input-create"
             required
           />
         </div>
 
         {/* Stock Minimum */}
         <div>
-          <label className="block mb-1 font-medium">Min pour achat</label>
+          <label className="label-create">Min pour achat</label>
           <input
             type="number"
             name="min"
             value={formData.min}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="input-create"
             required
           />
         </div>
 
         {/* Prix Achat */}
         <div>
-          <label className="block mb-1 font-medium">Prix d'Achat</label>
+          <label className="label-create">Prix d'Achat</label>
           <input
             type="number"
             step="0.01"
             name="prix_achat"
             value={formData.prix_achat}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="input-create"
             required
           />
         </div>
 
         {/* Prix Vente */}
         <div>
-          <label className="block mb-1 font-medium">Prix de Vente</label>
+          <label className="label-create">Prix de Vente</label>
           <input
             type="number"
             step="0.01"
             name="prix_vente"
             value={formData.prix_vente}
             onChange={handleChange}
-            className="w-full border rounded p-2"
+            className="input-create"
             required
           />
         </div>
 
         {/* Image */}
         <div>
-          <label className="block mb-1 font-medium">Image du Produit</label>
+          <label className="label-create">Image du Produit</label>
           <input
             type="file"
             accept="image/*"
             onChange={(e) => setImgFile(e.target.files[0])}
-            className="w-full border rounded p-2"
+            className="input-create"
           />
           {imgFile && (
             <img
               src={URL.createObjectURL(imgFile)}
               alt="preview"
-              className="mt-3 w-32 h-32 object-cover rounded-xl border"
+              className="img-create"
             />
           )}
         </div>
@@ -187,18 +188,18 @@ const CreateProduct = () => {
         {/* Bouton */}
         <button
           type="submit"
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg"
+          className="button-create"
           disabled={loading}
         >
           {loading ? "Création..." : "Ajouter le Produit"}
         </button>
 
         {/* Message d'erreur */}
-        {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+        {error && <p className="text-error-create">{error}</p>}
 
         {/* Message de succès */}
         {successMessage && (
-          <p className="text-green-600 text-center mt-2">{successMessage}</p>
+          <p className="text-success-create">{successMessage}</p>
         )}
       </form>
     </div>

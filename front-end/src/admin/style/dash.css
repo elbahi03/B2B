@@ -1,0 +1,60 @@
+.page-dash {
+    max-width: 900px;
+    margin: 0px auto;
+    padding: 20px;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    color: #333;
+  }
+  
+  .titre-dash {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #2d3436;
+  }
+  
+  .details-dash {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+  }
+  
+  .details-dash:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .details-titre {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #0984e3;
+    border-left: 4px solid #0984e3;
+    padding-left: 10px;
+  }
+  
+  /* ---- IMAGE ---- */
+  .img-dash {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 10px auto 20px auto;
+    border: 3px solid #ddd;
+  }
+  
+  /* ---- INFO TEXT ---- */
+  .details-dash p {
+    font-size: 16px;
+    margin: 8px 0;
+    padding: 10px 12px;
+    background: #f7f7f7;
+    border-radius: 8px;
+  }
+  
+  .details-dash p strong {
+    color: #2d3436;
+  }
+  
